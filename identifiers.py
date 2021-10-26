@@ -1,0 +1,3 @@
+sport = "tennis"
+
+print(sport)
