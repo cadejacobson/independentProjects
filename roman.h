@@ -11,3 +11,7 @@ const int V = 5;
 using namespace std;
 
 int romanConversion( string numeral );
+
+int iConversion( string numeral );
+
+int vConversion( string numeral );
