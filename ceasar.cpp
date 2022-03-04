@@ -1,4 +1,5 @@
 #include <string>
+#include <cstring>
 #include <cctype>
 #include <iostream>
 
@@ -8,22 +9,23 @@ using namespace std;
 int main()
 {
     int i;
-    int shiftAmt = 0;
+    string temp;
     bool lowered = false;
     char tempLower = '0';
     int newCharVal = 0;
-    string phrase = "";
+    string phrase;
+    int shiftAmt;
 
     cout << "Please enter the phrase you would like to encrypt: " << endl;
 
-    cin >> phrase;
+    getline(cin, phrase);
 
     cout << "Please enter the amount of shifts you would like to apply: "
         << endl;
 
-    cin >> shiftAmt;                
+    getline( cin, temp )   ;          
 
-    shiftAmt = shiftAmt % 26;                   //allows for any multiple of 26
+    shiftAmt = stoi(temp) % 26;                   //allows for any multiple of 26
 
 
     if( phrase.empty() )              //checks to ensure there is data inputted
@@ -43,6 +45,7 @@ int main()
         }
 
 
+
         newCharVal = tempLower + shiftAmt;
 
 
@@ -56,9 +59,10 @@ int main()
 
         if( lowered == true )
             phrase[i] = toupper( newCharVal );
-        else
+        else if( isalpha(phrase[i]) )
             phrase[i] = newCharVal;
     }
+
 
     cout << "Your encrypted phrase is: " << phrase << endl;
 
