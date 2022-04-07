@@ -50,12 +50,12 @@ void doubleList::print( ostream& out, string seperator )
     int count = 0;
     temp = headptr;
 
-    if( temp == nullptr )
+    if( temp == nullptr )     //if the list is empty, there's nothing to print
         return;
 
     temp = headptr->next;
 
-    do
+    do                          //traverse the list and output each item
     {
         if (count != 0)
             out << ", ";
@@ -72,14 +72,14 @@ bool doubleList::insert( int item )
 {
     node* temp, *curr, *prev;
     temp = new (nothrow) node;
-    if( temp == nullptr )
-        return false;
+    if( temp == nullptr )                   //if dynamic allocation fails
+        return false;                       //exit
     temp->theItem = item;
 
-    if( headptr == nullptr && tailptr == nullptr )
+    if( headptr == nullptr && tailptr == nullptr )              //empty
     {
-        headptr = temp;
-        tailptr = temp;
+        headptr = temp;                     //if the list is empty, do headptr
+        tailptr = temp;                     //and tailptr assignments
         temp->next = tailptr;
         temp->prev = headptr;
         return true;
@@ -88,7 +88,7 @@ bool doubleList::insert( int item )
     curr = headptr;
     prev = headptr;
 
-    if (item <= headptr->theItem)
+    if (item <= headptr->theItem)    //else, traverse the list and check items
     {
         curr = headptr->next;
         temp->next = curr;
