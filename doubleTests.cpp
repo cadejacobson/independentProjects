@@ -81,6 +81,10 @@ TEST_CASE( "Double Linked List" )
         list.insert( 1000 );
         list.print( sout, sep );
         REQUIRE( sout.str() == "1, 2, 3, 4, 5, 10, 100, 1000" );
+        REQUIRE(list.retrievePosition(-60) == -1);
+        REQUIRE( list.retrievePosition( 2 ) == 2 );
+        REQUIRE( list.retrievePosition( 5 ) == 5 );
+        REQUIRE( list.retrievePosition( 1000 ) == 8);
     }
 
 

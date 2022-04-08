@@ -174,3 +174,28 @@ bool doubleList::find( int item )
 
     return false;
 }
+
+
+int doubleList::retrievePosition( int item )
+{
+    int count = 1;
+    node* temp = headptr;
+
+    if( find( item ) == false )      //this guarantees the item is in the list
+        return -1;
+
+    while( temp != tailptr )
+    {                                           //traverse the list
+        if( temp->theItem == item )
+            return count;
+        temp = temp->next;
+        count += 1;                         //increment a counter if not found
+    }
+
+    if( temp->theItem == item )         //it must be in the last position
+    {                                   //verify this to be safe
+        return count++;
+    }
+
+    return -1;
+}
