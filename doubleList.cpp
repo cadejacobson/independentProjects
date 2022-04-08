@@ -38,7 +38,6 @@ int doubleList::size()                 //return the amount of nodes in the list
         temp = temp->next;
     }
 
-
     return count;
 }
 
@@ -53,15 +52,25 @@ void doubleList::print( ostream& out, string seperator )
     if( temp == nullptr )     //if the list is empty, there's nothing to print
         return;
 
-    temp = headptr->next;
+    temp = headptr;
 
-    do                          //traverse the list and output each item
+    if( temp == tailptr )
+    {
+        out << temp->theItem;
+        return;
+    }
+
+    while( temp != tailptr )                   //traverse the list and output each item
     {
         if (count != 0)
             out << ", ";
         out << temp->theItem;
         count += 1;
-    }while( temp != tailptr );
+        temp = temp->next;
+    }
+    temp = temp->next;
+
+    out << seperator << temp->theItem;
 
     return;
 }
@@ -90,13 +99,32 @@ bool doubleList::insert( int item )
 
     if (item <= headptr->theItem)    //else, traverse the list and check items
     {
-        curr = headptr->next;
         temp->next = curr;
         curr->prev = temp;
-        temp->prev = headptr;
         headptr = temp;
+        temp->prev = headptr;
         return true;
     }
+
+    while( curr != tailptr && item >= curr->theItem )
+    {
+        prev = curr;
+        curr = curr->next;
+    }
+
+    if( item <= curr->theItem )
+    {
+        temp->next = curr;
+        prev->next = temp;
+        temp->prev = prev;
+        curr->prev = temp;
+        return true;
+    }
+
+    tailptr = temp;
+    temp->next = tailptr;
+    curr->next = temp;
+    temp->prev = curr;
 
     return true;
 }
