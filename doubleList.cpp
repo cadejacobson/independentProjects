@@ -112,7 +112,7 @@ bool doubleList::insert( int item )
         curr = curr->next;
     }
 
-    if( item <= curr->theItem )
+    if( item <= curr->theItem )                 //middle
     {
         temp->next = curr;
         prev->next = temp;
@@ -121,10 +121,56 @@ bool doubleList::insert( int item )
         return true;
     }
 
-    tailptr = temp;
+    tailptr = temp;                             //end
     temp->next = tailptr;
     curr->next = temp;
     temp->prev = curr;
 
     return true;
+}
+
+
+
+void doubleList::clear()
+{
+    node* temp;
+    node* curr;
+    temp = headptr;
+    curr = headptr;
+
+    while( temp != tailptr )
+    {
+        curr = curr->next;
+        delete temp;
+        temp = curr;
+    }
+
+    headptr = nullptr;
+    tailptr = nullptr;
+
+    return;
+}
+
+
+
+bool doubleList::find( int item )
+{
+    node *temp = headptr;
+    
+    if( size() == 0 )
+    {
+        return false;
+    }
+
+    while( temp != tailptr )                    //beginning and middle
+    {
+        if( temp->theItem == item )
+            return true;
+        temp = temp->next;
+    }
+
+    if( temp->theItem == item )
+        return true;                            //last node
+
+    return false;
 }
