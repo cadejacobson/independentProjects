@@ -26,7 +26,6 @@ bool allocateGray(image& picture)
             cout << "Unable to allocate memory." << endl;
             return false;
         }
-
     }
 
     return true;

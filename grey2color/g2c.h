@@ -22,3 +22,7 @@ struct image
 };
 
 #endif
+
+
+bool allocateGray(image& picture);
+bool allocateColor(image& picture);
