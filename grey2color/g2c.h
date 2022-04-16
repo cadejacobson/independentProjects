@@ -26,3 +26,4 @@ struct image
 
 bool allocateGray(image& picture);
 bool allocateColor(image& picture);
+void headerInput(ifstream& fin, image& picture);
