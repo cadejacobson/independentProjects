@@ -1,5 +1,23 @@
 #include "nQueens.h"
 
+int main()
+{
+    int sideLength;
+    int ** board = nullptr;
+
+
+    cout << "Please enter the board's side length" << endl;
+    cin >> sideLength;
+
+    alloc2d( board, sideLength );
+
+
+
+    delete2d( board, sideLength );
+
+    return 0;
+}
+
 
 
 void nQueens(int** &board)
@@ -29,6 +47,7 @@ void alloc2d(int**& board, int n)
             return;
         }
     }
+
     return;
 }
 
