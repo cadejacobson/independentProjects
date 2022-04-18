@@ -2,14 +2,18 @@
 
 int main()
 {
-    int sideLength;
+    int sideLength = 15;
     int ** board = nullptr;
+    int usedVert[15]= {0};
+    int usedDiag1[15] = {0};
+    int usedDiag2[15] = {0};
+    int usedHor[15] = {0};
 
 
-    cout << "Please enter the board's side length" << endl;
+    cout << "Please enter the board's side length (max of 12)" << endl;
     cin >> sideLength;
 
-    alloc2d( board, sideLength );
+    alloc2d( board, sideLength + 4 );
 
 
 
@@ -20,8 +24,12 @@ int main()
 
 
 
-void nQueens(int** &board)
+void nQueens(int** &board, int vert[], int diag1[], int diag2[], int hor[],
+             int sideLength )
 {
+
+
+
 
     return;
 }
