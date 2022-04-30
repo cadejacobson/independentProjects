@@ -6,3 +6,8 @@
 
 
 using namespace std;
+
+void compareFighters(fighter userGuess, fighter actual);
+void checkWins(fighter userGuess, fighter actual);
+void checkLosses(fighter userGuess, fighter actual);
+void checkReach(fighter userGuess, fighter actual);

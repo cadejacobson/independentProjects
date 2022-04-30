@@ -10,6 +10,7 @@ struct fighter
     int wins;
     int losses;
     string style;
+    int reach;
 };
 
 
