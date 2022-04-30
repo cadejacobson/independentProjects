@@ -2,11 +2,16 @@
 
 using namespace std;
 
+enum weights {
+    Flyweight, Bantamweight, Featherweight, Lightweight,
+    Welterweight, Middleweight, LightHeavyweight, Heavyweight
+};
+
 struct fighter
 {
     string name;
     string country;
-    string weight;
+    weights weight;
     int wins;
     int losses;
     string style;

@@ -64,12 +64,19 @@ void compareFighters( fighter userGuess, fighter actual )
         return;
     
 
-    cout << setw(15) << "Wins" << setw(15) << "Losses" << setw(15) <<  "Reach" << endl;
+    cout << setw(15) << "Weight" <<setw(15) << "Wins" << setw(15) << "Losses" 
+        << setw(15) <<  "Reach";
+    cout << setw(15) << "Style" << endl;
+
+    checkWeight( userGuess, actual );
+
     checkWins(userGuess, actual);
 
     checkLosses( userGuess, actual );
 
     checkReach( userGuess, actual );
+
+    checkStyle( userGuess, actual );
 
     cout << endl;
     return;
@@ -117,4 +124,27 @@ void checkReach( fighter userGuess, fighter actual )
 
     return;
 
+}
+
+
+void checkStyle(fighter userGuess, fighter actual)
+{
+    if( userGuess.style == actual.style)
+        cout << setw(15) << "Match";
+    else
+        cout << setw(15) << "Incorrect";
+
+    return;
+}
+
+
+void checkWeight( fighter userGuess, fighter actual )
+{
+    if( userGuess.weight < actual.weight )
+        cout << setw(15) << "Too Light";
+    else
+        cout << setw(15) << "Too Heavy";
+
+
+    return;
 }
