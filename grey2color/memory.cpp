@@ -87,3 +87,42 @@ bool allocateColor(image& picture)
 
     return true;
 }
+
+
+
+
+void deleteColor(image picture)
+{
+    int i;
+
+
+    for (i = 0; i < picture.rows; i += 1)       //delete each row of pointers
+    {
+        delete[] picture.redGray[i];
+        delete[] picture.blue[i];
+        delete[] picture.green[i];
+    }
+
+    delete[] picture.redGray;             //delete the original three pointers
+    delete[] picture.blue;
+    delete[] picture.green;
+
+    return;
+}
+
+
+void deleteGrey(image picture)
+{
+    int i;
+
+
+    for (i = 0; i < picture.rows; i += 1)       //delete each row of pointers
+    {
+        delete[] picture.redGray[i];
+    }
+
+    delete[] picture.redGray;             //delete the original three pointers
+
+
+    return;
+}

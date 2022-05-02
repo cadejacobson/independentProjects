@@ -27,3 +27,6 @@ struct image
 bool allocateGray(image& picture);
 bool allocateColor(image& picture);
 void headerInput(ifstream& fin, image& picture);
+void deleteColor(image picture);
+void deleteGrey(image picture);
+void grey2Color( image &grey, image &color );

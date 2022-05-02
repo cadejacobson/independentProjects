@@ -30,14 +30,19 @@ int main( int argc, char **argv)
     headerInput( fin, greyPic );
 
 
-    cout << greyPic.magicNumber << endl;
-    cout << greyPic.rows<< endl;
-    cout << greyPic.cols<< endl;
+    colorPic.rows = greyPic.rows;
+    colorPic.cols = greyPic.cols;
+    colorPic.magicNumber = "P5";
 
     if( !allocateGray( greyPic ) )
         return -2;
     if( !allocateColor( colorPic ) )            //initialize values
         return -2;
+
+    grey2Color( greyPic, colorPic );
+
+    deleteColor( colorPic );
+    deleteGrey( greyPic );
 
     fin.close();
     fout.close();
