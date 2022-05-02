@@ -32,7 +32,7 @@ fighter randomFighter()
 
     guess = fighterTable[ distribution(generator) ];
 
-    return guess;
+    return Chuck;
 }
 
 
@@ -60,7 +60,7 @@ fighter fighterLookup( string guessedName )
     fighter fighterTable[100] = { McGregor, Khabib, Nate, Max, Volk, Khamzat,
         Israel, Kamaru, Colby, Francis, Saint, Jose, Cejudo, Bones, Chuck };
 
-    for( i = 0; i < 14; i++ )
+    for( i = 0; i < 15; i++ )
     {
         if( fighterTable[i].name == guessedName )
             return fighterTable[i];

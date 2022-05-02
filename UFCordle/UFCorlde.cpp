@@ -9,8 +9,6 @@ int main()
     bool correct = false;
     warrior = randomFighter();
 
-    cout << warrior.name << endl;
-
     while (i < 6 && correct == false)
     {
         if( i != 0 )
@@ -66,7 +64,7 @@ void compareFighters( fighter userGuess, fighter actual )
 
     cout << setw(15) << "Weight" <<setw(15) << "Wins" << setw(15) << "Losses" 
         << setw(15) <<  "Reach";
-    cout << setw(15) << "Style" << endl;
+    cout << setw(15) << "Style" << setw(15) << "Country" << endl;
 
     checkWeight( userGuess, actual );
 
@@ -77,6 +75,8 @@ void compareFighters( fighter userGuess, fighter actual )
     checkReach( userGuess, actual );
 
     checkStyle( userGuess, actual );
+
+    checkNation( userGuess, actual );
 
     cout << endl;
     return;
@@ -142,9 +142,21 @@ void checkWeight( fighter userGuess, fighter actual )
 {
     if( userGuess.weight < actual.weight )
         cout << setw(15) << "Too Light";
-    else
+    else if(userGuess.weight > actual.weight)
         cout << setw(15) << "Too Heavy";
+    else
+        cout << setw(15) << "Correct";
 
 
     return;
+}
+
+
+void checkNation( fighter userGuess, fighter actual )
+{
+    if( userGuess.country == actual.country )
+        cout << setw(15) << "Correct";
+    else
+        cout << setw(15) << "Incorrect";
+
 }

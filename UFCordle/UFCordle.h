@@ -13,3 +13,4 @@ void checkLosses(fighter userGuess, fighter actual);
 void checkReach(fighter userGuess, fighter actual);
 void checkStyle(fighter userGuess, fighter actual);
 void checkWeight(fighter userGuess, fighter actual);
+void checkNation(fighter userGuess, fighter actual);
