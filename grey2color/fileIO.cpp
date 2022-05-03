@@ -46,7 +46,7 @@ void fillArray(ifstream& fin, image& picture )
         j = 0;
         while (j < picture.cols)
         {
-            fin >> input;                       //read each into an integer
+            fin.read((char*)&input, sizeof(pixel)); //read each into an integer
             picture.redGray[i][j] = pixel(input);   //store this as a pixel
 
             j += 1;
@@ -63,7 +63,7 @@ void outputColor( ofstream &fout, image &picture )
     int j = 0;
 
     fout << picture.magicNumber << endl;            //output the header
-    if (!picture.comment.empty())
+    if( !picture.comment.empty() )
         fout << picture.comment << endl;
     fout << picture.cols << " " << picture.rows << endl;
     fout << "255" << '\n';
@@ -75,7 +75,35 @@ void outputColor( ofstream &fout, image &picture )
         while (j < picture.cols)        //write 8 bits to the binary file 
         {
             fout.write((char*)&picture.redGray[i][j], sizeof(pixel));
-            fout.write((char*)&picture.redGray[i][j], sizeof(pixel));
+            fout.write((char*)&picture.green[i][j], sizeof(pixel));
+            fout.write((char*)&picture.blue[i][j], sizeof(pixel));
+            j += 1;
+        }
+        i += 1;
+    }
+
+    return;
+}
+
+
+
+void outputGrey(ofstream& fout, image& picture)
+{
+    int i = 0;
+    int j = 0;
+
+    fout << "P5" << endl;            //output the header
+    if (!picture.comment.empty())
+        fout << picture.comment << endl;
+    fout << picture.cols << " " << picture.rows << endl;
+    fout << "255" << '\n';
+
+
+    while (i < picture.rows)
+    {
+        j = 0;
+        while (j < picture.cols)        //write 8 bits to the binary file 
+        {
             fout.write((char*)&picture.redGray[i][j], sizeof(pixel));
             j += 1;
         }

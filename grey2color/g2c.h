@@ -32,3 +32,4 @@ void deleteGrey(image picture);
 void grey2Color( image &grey, image &color );
 void fillArray(ifstream& fin, image& picture);
 void outputColor(ofstream &fout, image &colorPic);
+void outputGrey(ofstream& fout, image& picture);

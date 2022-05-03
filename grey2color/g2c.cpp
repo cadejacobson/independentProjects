@@ -19,10 +19,10 @@ int main( int argc, char **argv)
         return -1;
     }
 
-    fout.open( string(argv[2]) + ".pbm" );      //move into own function later
+    fout.open( string(argv[2]) + ".pgm" );      //move into own function later
     if( !fout.is_open() )
     {
-        cout << "Unable to open output file " << string(argv[2]) + ".pbm" << endl;
+        cout << "Unable to open output file " << string(argv[2]) + ".pgm" << endl;
         return -1;
     }
 
@@ -32,6 +32,7 @@ int main( int argc, char **argv)
 
     colorPic.rows = greyPic.rows;
     colorPic.cols = greyPic.cols;
+    colorPic.comment = greyPic.comment;
     colorPic.magicNumber = "P6";
 
     if( !allocateGray( greyPic ) )
@@ -41,7 +42,8 @@ int main( int argc, char **argv)
 
     fillArray( fin, greyPic );
     grey2Color( greyPic, colorPic );
-    outputColor( fout, colorPic );
+    //outputColor( fout, colorPic );
+    outputGrey( fout, greyPic );
 
     deleteColor( colorPic );
     deleteGrey( greyPic );
